@@ -6,6 +6,9 @@ Vagrant.configure("2") do |config|
   # Set up our environment
   config.vm.provision :shell, :path => "provision.sh"
 
+  # Performance gain
+  config.vm.synced_folder ".", "/vagrant", :nfs => true
+
   # Puppet master
   config.vm.define :master do |master|
     master.vm.box = "centos6"
